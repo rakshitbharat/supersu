@@ -1,0 +1,27 @@
+{
+    "name": "rakshitbharat/supersu",
+    "description": "rakshitbharat/supersu is an utility package to enable developers to log in as other users during development.",
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "php": ">=7.0",
+        "illuminate/support": "5.*"
+    },
+    "author": {
+        "name": "Rakshit Patel",
+        "email": "akshit Patel"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rakshitbharat\\Supersu\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Rakshitbharat\\Supersu\\SupersuServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}
