@@ -17,7 +17,7 @@ Include the partial in your layout file.
 
 ```php
 @if (config('app.debug'))
-    @include('sudosu::user-selector')
+    @include('supersu::user-selector')
 @endif
 ```
 
