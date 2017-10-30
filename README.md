@@ -27,12 +27,35 @@ Finally, publish the package's assets (the package won't work without this):
 $ php artisan vendor:publish
 ```
 
-## Config
-After running `vendor:publish`, a config file called `supersu.php` should appear in your project. Within here, there are two configuration values:
+## Config:
+After running `vendor:publish`, a config file called `supersu.php` should appear in your project. Within here, there are two configuration values.
 
+```
 **sudosu.user_model `string`**
 
 The path to the application User model. This will be used to retrieve the users displayed in the select dropdown. This must be an Eloquent Model instance. This is set to `App\User` by default.
+```
+
+## Events:
+Below is events called before and after switching of user. You can replicate of below file to extend your logic. 
+
+```php
+<?php
+
+namespace App\Facades;
+
+class SupersuCustom {
+
+    public static function loginAsUser($object = null) {
+
+    }
+
+    public static function returnCurrent($object = null) {
+
+    }
+
+}
+```
 
 ## Disclaimer - DANGER!
 This package can pose a serious security issue if used incorrectly, as anybody will be able to take control of any user's account. Please ensure that the service provider is only registered when the app is in a debug/local environment.
