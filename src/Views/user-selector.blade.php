@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/supersu/css/app.css">
+<link rel="stylesheet" href="{{ asset('vendor/supersu/compiled/css/app.css') }}">
 
 <div class="superSu">
     <div class="superSu__btn {{ $hasSupered ? 'superSu__btn--hasSupered' : '' }}" id="supersu-js-btn">

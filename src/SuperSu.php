@@ -7,8 +7,6 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Foundation\Application;
 use Illuminate\Session\SessionManager;
 use Symfony\Component\HttpFoundation\Response;
-use Modules\PermissionBuilder\Models\AdminPermission;
-use App\Admin;
 
 class Supersu {
 
@@ -29,12 +27,11 @@ class Supersu {
         $this->session->put($this->sessionKey, $currentUserId);
 
         $this->auth->loginUsingId($userId);
-        }
+    }
 
-        public function return()
-        {
+    public function returnCurrent() {
         if (!$this->hasSupered()) {
-        return false;
+            return false;
         }
 
         $this->auth->logout();
@@ -42,8 +39,12 @@ class Supersu {
         $originalUserId = $this->session->get($this->sessionKey);
 
         if ($originalUserId) {
-            session()->put('admin_permission', AdminPermission::where('admin_role_id', Admin::find($originalUserId)->admin_role_id)->pluck('admin_permission_slug', 'id')->toArray());
             $this->auth->loginUsingId($originalUserId);
+            try {
+                \App\Facades\SupersuCustom::returnCurrent($this);
+            } catch (\Exception $ex) {
+                
+            }
         }
 
         $this->session->forget($this->sessionKey);

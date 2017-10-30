@@ -5,26 +5,32 @@ namespace Rakshitbharat\Supersu\Controllers;
 use Illuminate\Http\Request;
 use Rakshitbharat\Supersu\Supersu;
 use Illuminate\Routing\Controller;
+use Illuminate\Foundation\Application;
 
 class SupersuController extends Controller {
 
+    protected $app;
     protected $superSu;
 
-    public function __construct(Supersu $superSu) {
+    public function __construct(Supersu $superSu, Application $app) {
         $this->superSu = $superSu;
+        $this->app = $app;
     }
 
     public function loginAsUser(Request $request) {
         $this->superSu->loginAsUser($request->userId, $request->originalUserId);
-        session()->put('admin_permission', AdminPermission::where('admin_role_id', Admin::find($request->userId)->admin_role_id)->pluck('admin_permission_slug', 'id')->toArray());
+        try {
+            \App\Facades\SupersuCustom::loginAsUser($this);
+        } catch (\Exception $ex) {
+            
+        }
         return redirect()->back();
     }
 
-    public function return(Request $request)
-    {
-    $this->superSu->return();
+    public function returnCurrent(Request $request) {
+        $this->superSu->returnCurrent();
 
-    return redirect()->back();
-}
+        return redirect()->back();
+    }
 
 }
