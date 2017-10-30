@@ -30,9 +30,8 @@ $ php artisan vendor:publish
 ## Config:
 After running `vendor:publish`, a config file called `supersu.php` should appear in your project. Within here, there are two configuration values.
 
-```
 **sudosu.user_model `string`**
-
+```
 The path to the application User model. This will be used to retrieve the users displayed in the select dropdown. This must be an Eloquent Model instance. This is set to `App\User` by default.
 ```
 
