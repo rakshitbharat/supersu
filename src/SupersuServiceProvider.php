@@ -35,7 +35,7 @@ class SupersuServiceProvider extends ServiceProvider {
         $this->loadViewsFrom(__DIR__ . '/Views', 'supersu');
 // Add an inline view composer for the user-selector
         View::composer('supersu::user-selector', function ($view) {
-            $supersu = App::make(SuperSu::class);
+            $supersu = App::make(Supersu::class);
 
             $view->with([
                 'users' => $supersu->getUsers(),
