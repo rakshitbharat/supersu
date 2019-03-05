@@ -56,7 +56,7 @@ class SupersuCustom {
 }
 ```
 
-## Disclaimer - DANGER!
+## Disclaimer - Alert!
 This package can pose a serious security issue if used incorrectly, as anybody will be able to take control of any user's account. Please ensure that the service provider is only registered when the app is in a debug/local environment.
 
 By using this package, you agree that Rakshit Patel and the contributors of this package cannot be held responsible for any damages caused by using this package.
